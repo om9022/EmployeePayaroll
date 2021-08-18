@@ -16,7 +16,7 @@ body{
     border: 0px solid green;
 }
 
-.logo-content{
+.logo-content{   
     display: flex;
     flex-direction: row;
     align-items: center;
