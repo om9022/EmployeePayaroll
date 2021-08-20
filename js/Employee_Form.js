@@ -1,4 +1,4 @@
-function save(){
-    let employee = new Employee_Data("name", "profile", "male", "sales", 123,new Date(), "notes")
+function save() {
+    let employee = new EmployeeData("name","profile","male","sales",123,new Date(),"note")
     alert(employee.toString())
 }
