@@ -64,6 +64,17 @@ function save(){
     }
 }
 
+function createAndUpdateStorage(employee) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"))
+    if (employeePayrollList != undefined) {
+      employeePayrollList.push(employee)
+    } else {
+      employeePayrollList = [employee]
+    }
+    alert(employeePayrollList.toString())
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList))
+  }
+
 function createEmployeePayroll {
     let employee = new EmployeeData()
     try {
