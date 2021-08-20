@@ -1,3 +1,5 @@
+const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require("constants");
+
 window.addEventListener("DOMContentLoaded", (event) => {
     // validate name
     const name = document.querySelector("#name");
@@ -48,6 +50,39 @@ window.addEventListener("DOMContentLoaded", (event) => {
         output.textContent = salary.value;
     });
 });
+
+function setTextValue(component,problem){
+    let textError = document.querySelector(component);
+    textError.textContent = problem
+}
+
+function save(){
+    try{
+        let newEmployee = createEmployeePayroll()
+    } catch (error) {
+        alert(error);
+    }
+}
+
+function createEmployeePayroll {
+    let employee = new EmployeeData()
+    try {
+      employee.name = getInputValueById('#name')
+    } catch (error) {
+      setTextValue('.name-error',error)
+      throw error;
+    }
+    employee.profileImage = getSelectionValue("[name=profile]").pop()
+    employee.gender = getSelectionValue("[name=gender]").pop()
+    employee.department = getSelectionValue("[name=department]")
+    employee.salary = getInputValueById("#salary")
+    employee.notes = getInputValueById("#notes")
+    let date = getInputValueById("#day")+" "+getInputValueById("#month")+" "+getInputValueById("#year")
+    employee.startDate = new Date(date)
+    alert(employee.toString())
+    return employee
+  }
+}
 
 const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
