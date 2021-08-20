@@ -93,12 +93,38 @@ function createEmployeePayroll {
     alert(employee.toString())
     return employee
   }
-}
 
 const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
     return value;
 };
+
+const getSelectionValue = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue)
+    let selItems = []
+    allItems.forEach(item => {
+      if(item.checked) selItems.push(item.value)
+    })
+    return selItems
+  }
+  
+  function resetForm() {
+    setValue("#name","")
+    unsetSelectedValue("[name=profile]")
+    unsetSelectedValue("[name=gender]")
+    unsetSelectedValue("[name=department]")
+    setValue('#salary',"")
+    setValue('#notes',"")
+    setValue('#day',"1")
+    setValue('#month',"January")
+    setValue('#year',"2021")
+  }
+  function  unsetSelectedValue(propertyValue){
+    let allItems = document.querySelectorAll(propertyValue)
+    allItems.forEach(item =>{
+      item.checked = false
+    })
+  }
 
 function save() {
     try {
